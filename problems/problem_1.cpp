@@ -3,6 +3,7 @@ void problemSolution1(float consumed_water) {
     // write your code here
     float consumption = consumed_water;
     float totalCost;
+    cost = totalCost;
     if (consumption <= 30) {
         totalCost += consumption * 0.4;
     } else {
@@ -24,6 +25,5 @@ void problemSolution1(float consumed_water) {
             }
         }
     }
-    cost = totalCost;
     return cost;
 }
