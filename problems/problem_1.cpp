@@ -1,8 +1,8 @@
-float problemSolution1(float consumed_water) {
+void problemSolution1(float consumed_water) {
     float cost;
     // write your code here
     float consumption = consumed_water;
-    float totalCost = 0;
+    float totalCost;
     cost = totalCost;
     if (consumption <= 30) {
         totalCost += consumption * (float)0.4;
