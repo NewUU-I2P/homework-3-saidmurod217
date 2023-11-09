@@ -1,46 +1,46 @@
 #include <string>
 #include <sstream>
-
+#include <string>
+#include <sstream>
 std::string problemSolution4(const std::string &macAddress) {
     // write your code here
-    int count = 0;
-    for(int i = 0; i < macAddress.length();i++) {
-        if (macAddress[i] == 'F') {
-            count++;
+    std::stringstream ss(macAddress);
+    std::string octet;
+    int firstOctet;
+
+    for (int i = 0; i < 6; i++) {
+        if (!getline(ss, octet, ':')) {
+            return "Invalid MAC address";
+        }
+
+        int octetValue;
+        std::istringstream(octet) >> std::hex >> octetValue;
+
+        if (i == 0) {
+            firstOctet = octetValue;
         }
     }
-        auto first = macAddress[0];
-        auto second = macAddress[1];
 
-        int first1;
-        switch (first)){
-    case 'A':
-        first1 = 10;
-        break;
-    case 'B':
-        first1  = 11;
-            break;
-            case 'C':
-        first1 = 12;
-        break;
-    case 'D':
-        first1 = 13;
-            break;
-
-            case 'E':
-                first1 = 14;
-            break;
-
-            case 'F':
-        first1 = 15;
-}
-    if(count == 12){
+    if (firstOctet % 2 == 0) {
+        return "Unicast";
+    } else if (firstOctet % 2 == 1) {
+        return "Multicast";
+    } else if (firstOctet == 255) {
+        for (int i = 1; i < 6; i++) {
+            if (!getline(ss, octet, ':')) {
+                return "Broadcast";
+            }
+            int octetValue;
+            std::istringstream(octet) >> std::hex >> octetValue;
+            if (octetValue != 255) {
+                return "Invalid MAC address";
+            }
+        }
         return "Broadcast";
-    } else if((first1 + second) % 2 == 0){
-        return "Even";
     } else {
-        return "Odd";
+        return "Unknown";
     }
+}
+
     // make use of control flow statements
     // return result;
-}
