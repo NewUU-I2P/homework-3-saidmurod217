@@ -1,4 +1,4 @@
-float problemSolution1(float consumed_water) {
+void problemSolution1(float consumed_water) {
     float cost = 13.0;
     // write your code here
     if (consumed_water <= 30.0) {
