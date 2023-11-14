@@ -8,6 +8,5 @@
 using namespace std;
 
 int main() {
-    problemSolution1();
     return 0;
 }
